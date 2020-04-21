@@ -12,7 +12,7 @@
       "id":"MYSQL_DATABASE_NAME",
       "display_name":"Name of the mysql database",
       "type":"text,",
-      "default_value":"default_db",
+      "default_value":"mysql_db",
       "description":"Description shown in the GUI",
       "min_length": "1",
       "max_length": "128"
@@ -21,7 +21,7 @@
       "id":"MYSQL_DATABASE_USER",
       "display_name":"Name of the mysql user",
       "type":"text",
-      "default_value":"default_user",
+      "default_value":"mysql_user",
       "description":"Description shown in the GUI",
       "min_length": "1",
       "max_length": "128"
