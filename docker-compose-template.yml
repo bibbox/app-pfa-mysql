@@ -6,36 +6,7 @@ networks:
 
 services:
 
-  §§INSTANCE-container1:
-    image: bibbox/app-image
-    container_name:  §§INSTANCE-container1
-    restart: unless-stopped
-    networks:
-      - bibbox-default-network
-    links:
-      - §§INSTANCE-lapp-db:app-db
-    ports:
-      - "§§PORT1:80"
-    depends_on:
-      - §§INSTANCE-app-db
-      - §§INSTANCE-app-data
-    volumes_from: 
-      - §§INSTANCE-app-data
-
-§§INSTANCE-container2:
-  image: bibbox/app-image2
-  container_name:  §§INSTANCE-container2
-  restart: unless-stopped
-  networks:
-    - bibbox-default-network
-  ports:
-    - "§§PORT2:8000"
-  depends_on:
-    - §§INSTANCE-app-data
-  volumes_from: 
-    - §§INSTANCE-app-data
-
-  §§INSTANCE-app-db:
+  §§INSTANCE-app-mysql-db:
     image: mysql:8
     container_name: §§INSTANCE-imagename-db
     restart: unless-stopped
@@ -58,3 +29,21 @@ services:
     volumes:
       - ./data/app-data:/var/app-data
       - ./data/app-config:/var/app-config
+
+
+  §§INSTANCE-app-adminer:
+    image: admin
+    container_name: §§INSTANCE-app-adminer
+    restart: unless-stopped
+    networks:
+      - bibbox-default-network
+    user: root
+    ports:
+      - "§§PORT1:8080"
+    volumes_from:
+      - §§INSTANCE-app-data
+    depends_on:
+      - §§INSTANCE-app-data
+      - §§INSTANCE-app-mysql-db
+      
+    
