@@ -23,16 +23,8 @@ services:
     depends_on:
       - §§INSTANCE-app-data
 
-  §§INSTANCE-app-data:
-    image: busybox
-    container_name: §§INSTANCE-app-data
-    volumes:
-      - ./data/app-data:/var/app-data
-      - ./data/app-config:/var/app-config
-
-
   §§INSTANCE-app-adminer:
-    image: admin
+    image: adminer
     container_name: §§INSTANCE-app-adminer
     restart: unless-stopped
     networks:
@@ -45,5 +37,16 @@ services:
     depends_on:
       - §§INSTANCE-app-data
       - §§INSTANCE-app-mysql-db
+
+
+  §§INSTANCE-app-data:
+    image: busybox
+    container_name: §§INSTANCE-app-data
+    volumes:
+      - ./data/app-data:/var/app-data
+      - ./data/app-config:/var/app-config
+
+
+
       
     
